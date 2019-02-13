@@ -110,20 +110,20 @@ spec:
             failureThreshold: {{ .Values.controller.livenessProbe.failureThreshold }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.controller.daemonset.containerPorts.http }}
               protocol: TCP
               {{- if .Values.controller.daemonset.useHostPort }}
               hostPort: {{ .Values.controller.daemonset.hostPorts.http }}
               {{- end }}
             - name: https
-              containerPort: 443
+              containerPort: {{ .Values.controller.daemonset.containerPorts.https }}
               protocol: TCP
               {{- if .Values.controller.daemonset.useHostPort }}
               hostPort: {{ .Values.controller.daemonset.hostPorts.https }}
               {{- end }}
           {{- if .Values.controller.stats.enabled }}
             - name: stats
-              containerPort: 18080
+              containerPort: {{ .Values.controller.daemonset.containerPorts.stats }}
               protocol: TCP
               {{- if .Values.controller.daemonset.useHostPort }}
               hostPort: {{ .Values.controller.daemonset.hostPorts.stats }}

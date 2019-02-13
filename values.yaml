@@ -28,6 +28,11 @@ controller:
   daemonset:
     useHostPort: false
 
+    containerPorts:
+      http: 80
+      https: 443
+      stats: 18080
+
     hostPorts:
       http: 80
       https: 443
